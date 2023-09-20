@@ -1,11 +1,11 @@
-import Image from 'next/image'
-import styles from './page.module.css'
-
-import { useState, useEffect } from 'react';
+import { useClient } from 'next/data-client';
+import { useState } from 'react';
 
 const WeatherApp = () => {
   const [weatherData, setWeatherData] = useState(null);
-  const apiKey = 'YOUR_API_KEY';
+  const apiKey = ' ';
+ 
+  useClient();
 
   useEffect(() => {
     // Fetch weather data when the component mounts
@@ -27,4 +27,12 @@ const WeatherApp = () => {
           <p>Temperature: {weatherData.current.temp_c}°C</p>
           <p>Condition: {weatherData.current.condition.text}</p>
           {/* Add more weather information here */}
-       
+          </div>
+      ) : (
+        <p>Loading weather data...</p>
+      )}
+    </div>
+  );
+};
+
+export default WeatherApp;
