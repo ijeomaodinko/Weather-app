@@ -1,4 +1,4 @@
-.main {
+/* .main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -108,7 +108,8 @@
   position: relative;
 }
 /* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
+
+/*@media (hover: hover) and (pointer: fine) {
   .card:hover {
     background: rgba(var(--card-rgb), 0.1);
     border: 1px solid rgba(var(--card-border-rgb), 0.15);
@@ -126,7 +127,7 @@
 }
 
 /* Mobile */
-@media (max-width: 700px) {
+/*@media (max-width: 700px) {
   .content {
     padding: 4rem;
   }
@@ -203,7 +204,7 @@
 }
 
 /* Tablet and Smaller Desktop */
-@media (min-width: 701px) and (max-width: 1120px) {
+/*@media (min-width: 701px) and (max-width: 1120px) {
   .grid {
     grid-template-columns: repeat(2, 50%);
   }
@@ -226,4 +227,33 @@
   to {
     transform: rotate(0deg);
   }
+} */
+
+
+/* Apply styles to the parent div */
+div {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles for the h2 element */
+h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* Styles for temperature and condition */
+p {
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+/* Loading message */
+p:empty::before {
+  content: "Loading weather data...";
+  font-style: italic;
+  font-size: 16px;
 }
