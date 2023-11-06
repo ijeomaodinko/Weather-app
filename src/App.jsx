@@ -1,11 +1,11 @@
 // App.js
 import React from 'react';
-import Weather from './Weather';
+import WeatherApp from './weather';
 
 function App() {
   return (
     <div className="App">
-      <Weather />
+      <WeatherApp />
     </div>
   );
 }
