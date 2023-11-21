@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+
 const Weather = () => {
   const [city, setCity] = useState('');
   const [weatherData, setWeatherData] = useState(null);
@@ -30,9 +31,9 @@ const Weather = () => {
       <button onClick={fetchWeather}>Get Weather</button>
       {weatherData && (
         <div>
-          <h2>Weather in {weatherData.name}</h2>
+          <h2 >Weather in {weatherData.name}</h2>
           <p>Temperature: {weatherData.main.temp}°C</p>
-          <p>Weather: {weatherData.weather[0].description}</p>
+          <p className="weather-description">Weather: {weatherData.weather[0].description}</p>
         </div>
       )}
     </div>
