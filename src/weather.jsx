@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import WeatherIcons from './weathericon';
+import { getLocation, API_KEY } from './utils';
+import WeatherSearch from './weathersearch';
+import HourlyWeather from './weatherhourly';
+import CityWeatherDetails from './weatheritem';
+import AirQualityChecker from './weatherairpolluti';
+
 
 const WeatherApp = () => {
   const [weatherData, setWeatherData] = useState(null);
   const [loading, setLoading] = useState(false);
-
-  const API_KEY = '77fbe33994032b61bc735adcf925abe8';
 
   const getWeatherData = async (latitude, longitude) => {
     console.log(API_KEY, latitude, longitude);
@@ -22,27 +26,14 @@ const WeatherApp = () => {
     setLoading(false);
   };
 
-  const getLocation = () => {
-    setLoading(true);
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        const latitude = position.coords.latitude;
-        const longitude = position.coords.longitude;
-        getWeatherData(latitude, longitude);
-      });
-    } else {
-      console.error('Geolocation is not supported by this browser.');
-      setLoading(false);
-    }
-  };
+  useEffect(() => {
+    // Use the getLocation function from utils.js
+    getLocation(getWeatherData, () => setLoading(false));
+  }, []);
 
   const getWeatherIcon = (weatherCode) => {
     return WeatherIcons[weatherCode] || null;
   };
-
-  useEffect(() => {
-    getLocation();
-  }, []);
 
   return (
     <div>
@@ -58,6 +49,10 @@ const WeatherApp = () => {
           <div className="weather-icon"> {getWeatherIcon(weatherData.weather[0].icon)}</div>
         </div>
       )}
+      <WeatherSearch  />
+      <CityWeatherDetails />
+        <HourlyWeather />
+        <AirQualityChecker />
     </div>
   );
 };
