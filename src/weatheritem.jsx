@@ -64,8 +64,8 @@ const CityWeatherDetails = () => {
   }, [cities, allCities]);
 
   return (
-    <div>
-      <h1>Weather Details for Cities</h1>
+    <div className='weather-container'>
+      <h5>Weather for cities of the world</h5>
       {weatherData.map((weather, index) => (
         <WeatherCard key={index} weather={weather} className={`city-card ${index >= 6 ? 'hidden' : ''}`} />
       ))}

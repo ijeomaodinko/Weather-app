@@ -6,6 +6,7 @@ import WeatherSearch from './weathersearch';
 import HourlyWeather from './weatherhourly';
 import CityWeatherDetails from './weatheritem';
 import AirQualityChecker from './weatherairpolluti';
+import './weather.css';
 
 
 const WeatherApp = () => {
@@ -37,12 +38,14 @@ const WeatherApp = () => {
 
   return (
     <div>
-      <h1>Weather App</h1>
+    <div className='weather-e'>
+
+      <h1>Weather Forecast</h1>
 
       {loading && <p>Loading...</p>}
 
       {weatherData && !loading && (
-        <div>
+        <div className='weather-i'>
           <h2 className="weather-location" >Location: {weatherData.name}</h2>
           <p className="weather-temp">Temperature: {weatherData.main.temp}°C</p>
           <p className="weather-description">Weather: {weatherData.weather[0].description}</p>
@@ -51,6 +54,7 @@ const WeatherApp = () => {
       )}
       <WeatherSearch  />
       <CityWeatherDetails />
+    </div>
         <HourlyWeather />
         <AirQualityChecker />
     </div>

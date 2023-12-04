@@ -1,0 +1,12 @@
+.weather-i {
+display: flex;
+position: relative;
+top: 2rem;
+width: 50%;
+left: 15%;
+}
+
+.weather-e {
+display: flex;
+flex-direction: row;
+}
