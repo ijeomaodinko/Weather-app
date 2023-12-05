@@ -37,15 +37,15 @@ const WeatherApp = () => {
   };
 
   return (
-    <div>
+    <div className='weatherwrapi'>
     <div className='weather-e'>
 
-      <h1>Weather Forecast</h1>
 
       {loading && <p>Loading...</p>}
 
       {weatherData && !loading && (
         <div className='weather-i'>
+          <h1>Weather Forecast</h1>
           <h2 className="weather-location" >Location: {weatherData.name}</h2>
           <p className="weather-temp">Temperature: {weatherData.main.temp}°C</p>
           <p className="weather-description">Weather: {weatherData.weather[0].description}</p>
