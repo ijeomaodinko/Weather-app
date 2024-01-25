@@ -1,4 +1,5 @@
 const API_KEY = `77fbe33994032b61bc735adcf925abe8`;
+const apiKEY = `5a86d3fd38b14664a36c330f81f10d30`;
 
 
 const getLocation = (successCallback, errorCallback) => {
@@ -42,5 +43,26 @@ const getAirQualityDescription = (aqi) => {
   }
 };
 
+// to get random cities
+const getRandomCities = (allCities, count) => {
+  const shuffledCities = [...allCities].sort(() => 0.5 - Math.random());
+  return shuffledCities.slice(0, count);
+};
 
-export { getLocation, API_KEY, getAirQualityDescription };
+
+// Function to generate a random color
+const getRandomColor = () => {
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  // Loop until a non-white and non-black color is generated
+  do {
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+  } while (color === '#FFFFFF' || color === '#000000');
+
+  return color;
+};
+
+
+export { getLocation, API_KEY, apiKEY, getAirQualityDescription, getRandomCities, getRandomColor };

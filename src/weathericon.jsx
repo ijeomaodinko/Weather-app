@@ -20,6 +20,7 @@ const WeatherIcons = {
   '13n': <FaSnowflake />,
   '50d': <FaWind />,
   '50n': <FaWind />,
+  'c01d': <FaSun />,
 };
 
 export default WeatherIcons;

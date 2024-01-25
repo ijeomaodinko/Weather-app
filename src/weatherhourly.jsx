@@ -33,14 +33,16 @@ const HourlyWeather = () => {
       {loading && <p>Loading hourly data...</p>}
 
       {hourlyData.length > 0 && (
-        <div>
+        <div className='weatherhourlywrapper'>
           {hourlyData.map((hour, index) => (
             <div key={index} className="hourly-item">
+            <div className='weatherhourly'>
             <p>{new Date(hour.dt * 1000).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}</p>
             <p>{hour.dt_txt}</p>
               <p>Temperature: {hour.main.temp}°C</p>
               <p>Weather: {hour.weather[0].description}</p>
               {/* Add additional details as needed */}
+              </div>
             </div>
           ))}
         </div>

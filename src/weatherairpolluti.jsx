@@ -33,7 +33,7 @@ const AirQualityChecker = () => {
 
   return (
     <div>
-      <h1>Air Quality Information</h1>
+      <h3>Air Quality</h3>
       {airQuality && (
         <div>
           <p>Index: {airQuality.list[0].main.aqi}</p>

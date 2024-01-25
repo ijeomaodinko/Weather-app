@@ -3,10 +3,8 @@ import axios from 'axios';
 import WeatherIcons from './weathericon';
 import { getLocation, API_KEY } from './utils';
 import WeatherSearch from './weathersearch';
-import HourlyWeather from './weatherhourly';
 import CityWeatherDetails from './weatheritem';
 import AirQualityChecker from './weatherairpolluti';
-import './weather.css';
 
 
 const WeatherApp = () => {
@@ -53,10 +51,12 @@ const WeatherApp = () => {
         </div>
       )}
       <WeatherSearch  />
-      <CityWeatherDetails />
     </div>
-        <HourlyWeather />
+    <div className='weather-e'>
+        {/* <HourlyWeather /> */}
+      <CityWeatherDetails />
         <AirQualityChecker />
+        </div>
     </div>
   );
 };

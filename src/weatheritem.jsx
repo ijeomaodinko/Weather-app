@@ -1,31 +1,18 @@
+// CityWeatherDetails.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import WeatherCard from './weathercard';
-import { API_KEY } from './utils';
-import './weatheritem.css';
+import { API_KEY, getRandomCities } from './utils';  // Import getRandomCities
 
 const CityWeatherDetails = () => {
   const allCities = [
     'New York', 'London', 'Tokyo', 'Paris', 'Sydney',
     'Berlin', 'Rome', 'Beijing', 'Moscow', 'Toronto', 
-    'Vancouver', 'Dubai', 'Cairo', 'Singapore', 'Hong Kong',
-    'Barcelona', 'Los Angeles', 'Chicago', 'San Francisco', 'Washington',
-    'Boston', 'Seattle', 'Las Vegas', 'Miami', 'Amsterdam',
-    'Dublin', 'Madrid', 'Mumbai', 'Delhi', 'Bangkok',
-    'Kuala Lumpur', 'Istanbul', 'Vienna', 'Prague', 'Stockholm',
-    'Copenhagen', 'Seoul', 'Taipei', 'Jakarta', 'Manila',
-    'Hanoi', 'Ho Chi Minh City', 'Helsinki', 'Oslo', 'Warsaw',
-    'Lisbon', 'Zurich', 'Brussels', 'Budapest', 'Athens',  
-    'Lima', 'Mexico City', 'Rio de Janeiro', 'Sao Paulo', 'Buenos Aires',
-    'Cape Town', 'Johannesburg', 'Copenhagen', 'Seoul', 'Taipei','Jakarta', 
-    'Oslo', 'Warsaw', 'Lisbon', 'Zurich', 'Brussels',
-    'Budapest', 'Athens', 'Lima', 'Rio de Janeiro','Buenos Aires', 
-    'Accra', 'Abuja', 'Enugu', 'Melbourne'
-    // ... your cities list
-  ];
+// cities list
+];
 
   const [weatherData, setWeatherData] = useState([]);
-  const [cities, setCities] = useState(allCities);
+  const [cities, setCities] = useState(getRandomCities(allCities, 6));  // Initial set of random cities
 
   useEffect(() => {
     const fetchData = async () => {
@@ -44,6 +31,7 @@ const CityWeatherDetails = () => {
           data.push(response.data);
         } catch (error) {
           console.error(`Error fetching weather data for ${city}:`, error);
+          // Optionally: Handle the error or set a placeholder value for the city
         }
       }
 
@@ -52,11 +40,10 @@ const CityWeatherDetails = () => {
 
     fetchData();
 
-    // Switch to the next set of cities every 1 minute
+    // Switch to the next set of random cities every 1 minute
     const intervalId = setInterval(() => {
-      const startIndex = allCities.indexOf(cities[0]);
-      const nextCities = allCities.slice(startIndex + 6, startIndex + 12);
-      setCities(nextCities.length > 0 ? nextCities : allCities.slice(0, 6));
+      const nextCities = getRandomCities(allCities, 6);  // Get a new set of random cities
+      setCities(nextCities);
     }, 60000); // 1 minute in milliseconds
 
     // Clear the interval when the component is unmounted
