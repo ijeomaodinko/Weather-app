@@ -1,8 +1,29 @@
-// CityWeatherDetails.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import WeatherCard from './weathercard';
 import { API_KEY, getRandomCities } from './utils';  // Import getRandomCities
+
+const cardStyles = {
+  weatherContainer: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    width: '50%',
+    justifyContent: 'space-between',
+    backgroundColor: 'navy',
+    padding: '20px',
+    borderRadius: '12px',
+    color: 'gold',
+  },
+  cityCard: {
+    flexBasis: '30%', // Adjust the percentage to control the width
+    margin: '10px 0',
+    width: '12rem',
+    padding: '15px',
+    borderRadius: '12px',
+    backgroundColor: 'navy',
+    color: 'gold',
+  },
+};
 
 const CityWeatherDetails = () => {
   const allCities = [
@@ -51,12 +72,14 @@ const CityWeatherDetails = () => {
   }, [cities, allCities]);
 
   return (
-    <div className='weather-container'>
-      <h5>Weather for cities of the world</h5>
-      {weatherData.map((weather, index) => (
-        <WeatherCard key={index} weather={weather} className={`city-card ${index >= 6 ? 'hidden' : ''}`} />
-      ))}
-    </div>
+    <div style={cardStyles.weatherContainer}>
+    <h5>Weather for cities of the world</h5>
+    {weatherData.map((weather, index) => (
+      <div key={index} style={cardStyles.cityCard} className={`city-card ${index >= 6 ? 'hidden' : ''}`}>
+        <WeatherCard weather={weather} />
+      </div>
+    ))}
+  </div>
   );
 };
 
