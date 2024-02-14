@@ -6,23 +6,35 @@ import { API_KEY, getRandomCities } from './utils';  // Import getRandomCities
 const cardStyles = {
   weatherContainer: {
     display: 'flex',
+    flexDirection: 'row',
     flexWrap: 'wrap',
-    width: '50%',
+    width: '69%',
     justifyContent: 'space-between',
     backgroundColor: 'navy',
-    padding: '20px',
+    // padding: '20px',
     borderRadius: '12px',
     color: 'gold',
   },
   cityCard: {
     flexBasis: '30%', // Adjust the percentage to control the width
+    display: 'flex',
     margin: '10px 0',
-    width: '12rem',
-    padding: '15px',
+    width: '6rem',
+    // padding: '15px',
     borderRadius: '12px',
     backgroundColor: 'navy',
     color: 'gold',
   },
+h5: {
+    textAlign: 'center',
+    width: '100%',
+    color: 'gold',
+    textAlign: 'center',
+    fontSize: '1.5rem',
+    fontWeight: 'bold',
+    bottom: '0',
+  },
+
 };
 
 const CityWeatherDetails = () => {
@@ -73,7 +85,7 @@ const CityWeatherDetails = () => {
 
   return (
     <div style={cardStyles.weatherContainer}>
-    <h5>Weather for cities of the world</h5>
+    <h5 style={cardStyles.h5}>Weather for cities of the world</h5>
     {weatherData.map((weather, index) => (
       <div key={index} style={cardStyles.cityCard} className={`city-card ${index >= 6 ? 'hidden' : ''}`}>
         <WeatherCard weather={weather} />

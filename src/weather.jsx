@@ -5,14 +5,31 @@ import { getLocation, API_KEY } from './utils';
 import WeatherSearch from './weathersearch';
 import CityWeatherDetails from './weatheritem';
 import AirQualityChecker from './weatherairpolluti';
+import styled from 'styled-components';
 
+// Styled components for divs
+const WeatherWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+`;
+
+const WeatherContainer = styled.div`
+  flex: 1;
+  margin-right: 20px;
+`;
+
+const WeatherInfoContainer = styled.div`
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-bottom: 20px;
+`;
 
 const WeatherApp = () => {
   const [weatherData, setWeatherData] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const getWeatherData = async (latitude, longitude) => {
-    console.log(API_KEY, latitude, longitude);
     setLoading(true);
     try {
       const response = await axios.get(
@@ -26,7 +43,6 @@ const WeatherApp = () => {
   };
 
   useEffect(() => {
-    // Use the getLocation function from utils.js
     getLocation(getWeatherData, () => setLoading(false));
   }, []);
 
@@ -35,29 +51,25 @@ const WeatherApp = () => {
   };
 
   return (
-    <div className='weatherwrapi'>
-    <div className='weather-e'>
-
-
-      {loading && <p>Loading...</p>}
-
-      {weatherData && !loading && (
-        <div className='weather-i'>
-          <h1>Weather Forecast</h1>
-          <h2 className="weather-location" >Location: {weatherData.name}</h2>
-          <p className="weather-temp">Temperature: {weatherData.main.temp}°C</p>
-          <p className="weather-description">Weather: {weatherData.weather[0].description}</p>
-          <div className="weather-icon"> {getWeatherIcon(weatherData.weather[0].icon)}</div>
-        </div>
-      )}
-      <WeatherSearch  />
-    </div>
-    <div className='weather-e'>
-        {/* <HourlyWeather /> */}
-      <CityWeatherDetails />
+    <WeatherWrapper>
+      <WeatherContainer>
+        {loading && <p>Loading...</p>}
+        {weatherData && !loading && (
+          <WeatherInfoContainer>
+            <h1>Weather Forecast</h1>
+            <h2 className="weather-location">Location: {weatherData.name}</h2>
+            <p className="weather-temp">Temperature: {weatherData.main.temp}°C</p>
+            <p className="weather-description">Weather: {weatherData.weather[0].description}</p>
+            <div className="weather-icon"> {getWeatherIcon(weatherData.weather[0].icon)}</div>
+          </WeatherInfoContainer>
+        )}
+        <CityWeatherDetails />
+      </WeatherContainer>
+      <WeatherContainer>
+        <WeatherSearch />
         <AirQualityChecker />
-        </div>
-    </div>
+      </WeatherContainer>
+    </WeatherWrapper>
   );
 };
 
