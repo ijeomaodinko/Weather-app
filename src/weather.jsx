@@ -12,11 +12,25 @@ const WeatherWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  flexDirection: row;
 `;
 
 const WeatherContainer = styled.div`
-  flex: 1;
-  margin-right: 20px;
+  display: flex;
+  flexDirection: column;
+  background-color: blue;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 6px;
+`;
+
+const Weatherz = styled.div`
+  display: flex;
+  flexDirection: column;
+  margin-top: 6px;
+  marginLeft: 2px;
+  gap: 24rem;
+
 `;
 
 const WeatherInfoContainer = styled.div`
@@ -65,10 +79,10 @@ const WeatherApp = () => {
         )}
         <CityWeatherDetails />
       </WeatherContainer>
-      <WeatherContainer>
+      <Weatherz>
         <WeatherSearch />
         <AirQualityChecker />
-      </WeatherContainer>
+      </Weatherz>
     </WeatherWrapper>
   );
 };

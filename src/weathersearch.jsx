@@ -23,6 +23,7 @@ const modalStyle = {
     width: '16rem',
     borderRadius: '12px',
     backgroundColor: '#fff',
+    borderColor: blue,
   },
   weatherIcons: {
     display: 'flex',
@@ -117,7 +118,7 @@ const WeatherSearch = () => {
 
   return (
     <div style={modalStyle.contentBox}>
-    <h3>Check for your favourite country</h3>
+    {/* <h3>Check for your favourite country</h3> */}
       <div style={modalStyle.inputContainer}>
       <input
         type="text"

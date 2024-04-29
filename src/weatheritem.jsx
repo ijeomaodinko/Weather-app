@@ -29,7 +29,6 @@ h5: {
     textAlign: 'center',
     width: '100%',
     color: 'gold',
-    textAlign: 'center',
     fontSize: '1.5rem',
     fontWeight: 'bold',
     bottom: '0',
