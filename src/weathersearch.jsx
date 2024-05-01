@@ -23,7 +23,8 @@ const modalStyle = {
     width: '16rem',
     borderRadius: '12px',
     backgroundColor: '#fff',
-    borderColor: blue,
+    border: '12px',
+    borderColor: 'blue',
   },
   weatherIcons: {
     display: 'flex',

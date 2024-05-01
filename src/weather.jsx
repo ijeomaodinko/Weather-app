@@ -30,13 +30,20 @@ const Weatherz = styled.div`
   margin-top: 6px;
   marginLeft: 2px;
   gap: 24rem;
+`;
 
+const Weatheri = styled.div`
+  display: flex;
+  flexDirection: row;
+  margin-top: 6px;
+  marginLeft: 2px;
 `;
 
 const WeatherInfoContainer = styled.div`
   border: 1px solid #ccc;
   padding: 20px;
   margin-bottom: 20px;
+  flexDirection: column;
 `;
 
 const WeatherApp = () => {
@@ -69,18 +76,20 @@ const WeatherApp = () => {
       <WeatherContainer>
         {loading && <p>Loading...</p>}
         {weatherData && !loading && (
+          <Weatheri>
           <WeatherInfoContainer>
-            <h1>Weather Forecast</h1>
+            <h5>Weather Forecast</h5>
             <h2 className="weather-location">Location: {weatherData.name}</h2>
             <p className="weather-temp">Temperature: {weatherData.main.temp}°C</p>
             <p className="weather-description">Weather: {weatherData.weather[0].description}</p>
             <div className="weather-icon"> {getWeatherIcon(weatherData.weather[0].icon)}</div>
           </WeatherInfoContainer>
+        <WeatherSearch />
+          </Weatheri>
         )}
         <CityWeatherDetails />
       </WeatherContainer>
       <Weatherz>
-        <WeatherSearch />
         <AirQualityChecker />
       </Weatherz>
     </WeatherWrapper>
