@@ -89,9 +89,11 @@ const WeatherApp = () => {
         )}
         <CityWeatherDetails />
       </WeatherContainer>
+
       <Weatherz>
         <AirQualityChecker />
       </Weatherz>
+      
     </WeatherWrapper>
   );
 };
