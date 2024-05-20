@@ -13,8 +13,7 @@ Modal.setAppElement('#root');
 const modalStyle = {
   contentBox: {
     transform: 'translate(-50%, -50%)',
-    marginTop: '10rem',
-    marginLeft: '19rem',
+    marginTop: '-9rem',
     alignItems: 'center',
   },
   inputContainer: {

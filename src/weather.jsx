@@ -10,40 +10,52 @@ import styled from 'styled-components';
 // Styled components for divs
 const WeatherWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
   flexDirection: row;
+  marginLeft: auto;
+  marginRight: auto;
+  width: 100%;
 `;
 
 const WeatherContainer = styled.div`
-  display: flex;
-  flexDirection: column;
+ display: flex;
+  flex-direction: row;
+  justify-content: center; /* Vertically center the content */
+  align-items: center; /* Horizontally center the content */
   background-color: blue;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 6px;
+  margin-top: 1px;
+  gap: 1rem;
+  width: 100%; /* Set the width of the div to 80% of the screen */
+  margin-left: auto; 
+  margin-right: auto; 
 `;
 
 const Weatherz = styled.div`
-  display: flex;
-  flexDirection: column;
-  margin-top: 6px;
-  marginLeft: 2px;
-  gap: 24rem;
-`;
-
-const Weatheri = styled.div`
-  display: flex;
-  flexDirection: row;
-  margin-top: 6px;
-  marginLeft: 2px;
+ display: flex;
+  flex-direction: row;
+  justify-content: center; 
+  align-items: center;
+  position: relative; 
+  left: 0; 
+  top: 5rem;
+  transform: translateY(-50%); /* Center the div vertically */
+  background-color: blue;
+  gap: 1rem;
+  width: 100%; /* Set the width of the div to 80% of the screen */
 `;
 
 const WeatherInfoContainer = styled.div`
   border: 1px solid #ccc;
   padding: 20px;
   margin-bottom: 20px;
-  flexDirection: column;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center; /* Align content horizontally at the center */
+  justify-content: center; /* Align content vertically at the center */
 `;
 
 const WeatherApp = () => {
@@ -74,9 +86,9 @@ const WeatherApp = () => {
   return (
     <WeatherWrapper>
       <WeatherContainer>
+          
         {loading && <p>Loading...</p>}
         {weatherData && !loading && (
-          <Weatheri>
           <WeatherInfoContainer>
             <h5>Weather Forecast</h5>
             <h2 className="weather-location">Location: {weatherData.name}</h2>
@@ -84,13 +96,12 @@ const WeatherApp = () => {
             <p className="weather-description">Weather: {weatherData.weather[0].description}</p>
             <div className="weather-icon"> {getWeatherIcon(weatherData.weather[0].icon)}</div>
           </WeatherInfoContainer>
-        <WeatherSearch />
-          </Weatheri>
         )}
         <CityWeatherDetails />
       </WeatherContainer>
 
       <Weatherz>
+        <WeatherSearch />
         <AirQualityChecker />
       </Weatherz>
       
